@@ -1,0 +1,15 @@
+
+${AnsiColor.BRIGHT_RED}🏳‍🌈 ${AnsiColor.BRIGHT_RED}Th${AnsiColor.BRIGHT_MAGENTA}e${AnsiColor.RED} ${AnsiColor.BRIGHT_YELLOW}server ${AnsiColor.BRIGHT_CYAN}power${AnsiColor.BLUE} by${AnsiColor.MAGENTA} @author{🛸}${AnsiColor.BRIGHT_GREEN} ______  _____  _____ _____  _______
+ ${AnsiColor.BRIGHT_GREEN}                             (●ˇ∀ˇ●)   -  😍  -   | ___ \|  _  ||  _  |_|
+ ${AnsiColor.BRIGHT_GREEN} ___ _ __  _ __ _ _ __   __ _| |_/ /| | | || | | | | |   | |_/ /\ V /
+ ${AnsiColor.BRIGHT_GREEN} / __| '_ \| '__| | '_ \ / _` | ___ \${AnsiColor.YELLOW}  😂  ${AnsiColor.BRIGHT_GREEN}|| | | ${AnsiColor.BRIGHT_MAGENTA}🙃 ${AnsiColor.BRIGHT_GREEN} | | |   | ___ \ \ /
+ ${AnsiColor.BRIGHT_GREEN} \__ \ |_) | |  | | | | | (_| | |_/ /\ \_/ /\ \_/ / | |   | |_/ / | |
+ ${AnsiColor.BRIGHT_GREEN} |___/ .__/|_|  |_|_| |_|\__, \____/  \___/  \___/  \_/   \____/  \_/
+ ${AnsiColor.BRIGHT_GREEN}     | |      ${AnsiColor.MAGENTA}👍 ${AnsiColor.BRIGHT_GREEN}            __/ |    ${AnsiColor.BRIGHT_YELLOW}      👌
+  ${AnsiColor.BRIGHT_GREEN}    |_|    | |          |___/          | |
+${AnsiColor.MAGENTA}__  ___   _| |__   ___  _ __   __ _  __| | __ _
+\ \/ / | | | '_ \ / _ \| '_ \ / _` |/ _` |/ _` |
+ >  <| |_| | | | | (_) | | | | (_| | (_| | (_| | ❤   ❤
+/_/\_\\__,_|_| |_|\___/|_| |_|\__, |\__,_|\__,_ ${AnsiColor.RED}|——😱——${AnsiColor.MAGENTA}
+                               __/ |
+                              |___/
