@@ -1,4 +1,5 @@
-### 工程说明
+### Load-service
 
 ---
-父类工程，负责jar 版本控制；工程聚合
+使用spring-boot;spring-cloud;构建微服务。
+采用redis,ELK 等技术构建出高可用的分布式服务
