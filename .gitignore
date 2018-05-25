@@ -7,6 +7,6 @@
 *.iml
 out
 gen
-test
+#test
 target
 wrapper

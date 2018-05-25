@@ -8,15 +8,7 @@
     <artifactId>load-service-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <modules>
-        <module>load-service-component</module>
-        <module>load-service-html</module>
-        <module>load-service-provider</module>
-        <module>load-service-solr</module>
-        <module>load-service-sso</module>
-        <module>load-service-util</module>
-        <module>load-service-web</module>
-    </modules>
+
     <!-- 集中定义依赖版本号 -->
     <properties>
         <junit.version>4.12</junit.version>
@@ -351,6 +343,15 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <modules>
+        <module>load-service-component</module>
+        <module>load-service-html</module>
+        <module>load-service-provider</module>
+        <module>load-service-solr</module>
+        <module>load-service-sso</module>
+        <module>load-service-util</module>
+        <module>load-service-web</module>
+    </modules>
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
