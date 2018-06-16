@@ -11,6 +11,9 @@
 
     <!-- 集中定义依赖版本号 -->
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
         <junit.version>4.12</junit.version>
         <spring.version>5.0.2.RELEASE</spring.version>
         <!--mybatis的3.4.3及以上需要java8支持；使用3.4.1； -->
@@ -351,6 +354,7 @@
         <module>load-service-sso</module>
         <module>load-service-util</module>
         <module>load-service-web</module>
+        <module>load-service-crawler</module>
     </modules>
     <build>
         <finalName>${project.artifactId}</finalName>
