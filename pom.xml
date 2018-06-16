@@ -9,6 +9,17 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
+    <modules>
+        <module>load-service-component</module>
+        <module>load-service-html</module>
+        <module>load-service-provider</module>
+        <module>load-service-solr</module>
+        <module>load-service-sso</module>
+        <module>load-service-util</module>
+        <module>load-service-web</module>
+        <module>load-service-crawler</module>
+        <module>load-service-websocket</module>
+    </modules>
 
     <!-- 集中定义依赖版本号 -->
     <properties>
@@ -347,16 +358,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <modules>
-        <module>load-service-component</module>
-        <module>load-service-html</module>
-        <module>load-service-provider</module>
-        <module>load-service-solr</module>
-        <module>load-service-sso</module>
-        <module>load-service-util</module>
-        <module>load-service-web</module>
-        <module>load-service-crawler</module>
-    </modules>
+
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
