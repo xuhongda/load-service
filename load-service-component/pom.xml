@@ -3,16 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.xu</groupId>
+    <parent>
+        <groupId>com.xu</groupId>
+        <artifactId>load-service-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <artifactId>load-service-component</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
     <modules>
         <module>load-service-interface</module>
         <module>load-service-mapper</module>
+        <module>load-service-pojo</module>
     </modules>
-
+<dependencyManagement>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
@@ -21,6 +24,7 @@
             <version>1.16.20</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
+</dependencyManagement>
+
 </project>
