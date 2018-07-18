@@ -19,7 +19,7 @@
 <body>
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <div>
-    <div id="main" style="width: 1500px;height:900px;margin-right: auto;margin-left: auto"></div>
+    <div id="main" style="width: 1000px;height:700px;margin-right: auto;margin-left: auto"></div>
 
     <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main'));
@@ -77,6 +77,7 @@
                     tooltip: {
                         trigger: 'axis'
                     },
+                    color:["#FFB6C1","#00FF00","#4B0082","#00BFFF"],
                     legend: {
                         data: [yi, er, san,si]
                     },
@@ -111,7 +112,13 @@
                                     position: 'top',
                                     formatter: '{c}元'
                                 }
-                            }
+                            },
+                            lineStyle: {
+                                normal: {
+                                    color :"#FFB6C1",
+                                    width: 3,
+                                }
+                            },
                         },
                         {
                             name: er,
@@ -123,7 +130,13 @@
                                     position: 'top',
                                     formatter: '{c}元'
                                 }
-                            }
+                            },
+                            lineStyle: {
+                                normal: {
+                                    color :"#00FF00",
+                                    width: 3,
+                                }
+                            },
                         },
                         {
                             name: san,
@@ -135,7 +148,13 @@
                                     position: 'top',
                                     formatter: '{c}元'
                                 }
-                            }
+                            },
+                            lineStyle: {
+                                normal: {
+                                    color :"#4B0082",
+                                    width: 3,
+                                }
+                            },
                         },
                         {
                             name: si,
@@ -147,7 +166,13 @@
                                     position: 'top',
                                     formatter: '{c}元'
                                 }
-                            }
+                            },
+                            lineStyle: {
+                                normal: {
+                                    color :"#00BFFF",
+                                    width: 3,
+                                }
+                            },
                         },
                     ],
                 };
