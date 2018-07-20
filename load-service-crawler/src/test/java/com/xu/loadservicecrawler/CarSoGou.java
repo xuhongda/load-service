@@ -59,8 +59,8 @@ public class CarSoGou {
                     //如果下拉列表元素全部加载出来的话，可以直接选定元素点击
                    /* actions.dragAndDrop(selListBox, element).click().perform();
                     actions.release();*/
+                   //直接选定元素点击
                     element.click();
-
                 }
 
             }
