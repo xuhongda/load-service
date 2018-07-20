@@ -52,16 +52,18 @@ public class CarSoGou {
             WebElement selListBox = webElement.findElement(By.cssSelector(".selListBox"));
             //target
             List<WebElement> a = selListBox.findElements(By.tagName("a"));
-            for (WebElement element : a){
+            for (WebElement element : a) {
                 System.out.println(element.getText());
-                if ("川".equals(element.getText())){
-                    actions.dragAndDrop(selListBox,element).click().perform();
-                    actions.release();
+                if ("粤".equals(element.getText())) {
+                    //模拟鼠标移动，拖动点击，但是速度方面有点慢
+                    //如果下拉列表元素全部加载出来的话，可以直接选定元素点击
+                   /* actions.dragAndDrop(selListBox, element).click().perform();
+                    actions.release();*/
+                    element.click();
+
                 }
+
             }
-
-
-      //      Thread.sleep(1000);
             //1 车牌
             WebElement span1 = box.findElement(By.cssSelector("span.input-b"));
             WebElement input = span1.findElement(By.tagName("input"));
@@ -81,6 +83,18 @@ public class CarSoGou {
             Thread.sleep(1000);
 
 
+            //判断网络因素
+            List<WebElement> bbs = driver.findElements(By.cssSelector(".weizhang-box"));
+            WebElement b = bbs.get(2);
+            System.out.println(b.getText());
+            if (b.getText().contains("抱歉，查询出错，请重试。")) {
+                WebElement re = b.findElement(By.cssSelector("p.btn-p"));
+                re.click();
+                Thread.sleep(100);
+                //click
+                box.findElement(By.cssSelector("p.f-btn")).findElement(By.tagName("a")).click();
+                Thread.sleep(100);
+            }
             //
             Pencancy pencancy = new Pencancy();
             Document parse = Jsoup.parse(driver.getPageSource());
@@ -88,59 +102,72 @@ public class CarSoGou {
             Element parseBox = elementsByClass.get(3);
             Elements p = parseBox.getElementsByTag("p");
             String[] split = p.get(0).text().split("，");
-            int i =0;
-            for (String s : split){
-                String regEx="[^0-9]";
+            int i = 0;
+            for (String s : split) {
+                String regEx = "[^0-9]";
                 Pattern pp = Pattern.compile(regEx);
                 Matcher m = pp.matcher(s);
 
-                if (i == 0){
-                    System.out.println( m.replaceAll("").trim());
+                if (i == 0) {
+                    System.out.println(m.replaceAll("").trim());
                     //罚款
                     pencancy.setTotalFine(m.replaceAll("").trim());
-                }else if (i == 1){
-                    System.out.println( m.replaceAll("").trim());
+                } else if (i == 1) {
+                    System.out.println(m.replaceAll("").trim());
                     //扣分
-                    pencancy.setTotalPointReducted( m.replaceAll("").trim());
+                    pencancy.setTotalPointReducted(m.replaceAll("").trim());
                 }
-                    i++;
+                i++;
             }
             Elements children = parseBox.children();
             Elements tbody = children.get(1).getElementsByTag("tbody");
             Elements trs = tbody.get(0).getElementsByTag("tr");
             List<Details> list = new ArrayList<>();
             int k = 0;
-            for (Element element : trs){
-                if (k > 0){
-                    Details details  = new Details();
+            for (Element element : trs) {
+                if (k > 0) {
+                    Details details = new Details();
                     Elements tds = element.getElementsByTag("td");
-                    for (int j = 0; j <tds.size() ; j++) {
-                        if (j == 0){
+                    for (int j = 0; j < tds.size(); j++) {
+                        if (j == 0) {
                             details.setId(Integer.parseInt(tds.get(0).text()));
-                        } else
-                        if (j == 1){
+                        } else if (j == 1) {
                             details.setTime(tds.get(1).text());
-                        } else
-                        if ( j == 2){
+                        } else if (j == 2) {
                             details.setLocation(tds.get(2).text());
-                        } else
-                        if (j == 3){
+                        } else if (j == 3) {
                             details.setDescribe(tds.get(3).text());
-                        } else
-                        if (j == 4){
+                        } else if (j == 4) {
                             details.setFine(tds.get(4).text());
+                        } else if (j == 5) {
+                            details.setPoint(tds.get(5).text());
                         }
-
                     }
-                   // System.out.println(td.text());
                     list.add(details);
                 }
                 k++;
             }
+            if (list.size() == 0) {
+                pencancy.setTotalFine("0");
+            }
+
+
             pencancy.setTotalCount(Integer.valueOf(list.size()).toString());
             pencancy.setDetails(list);
             Object o = JSON.toJSON(pencancy);
             System.out.println(o);
+            //判断返回
+            if (list.size() > 0) {
+                List<WebElement> weizhanBox = driver.findElements(By.cssSelector("div.weizhang-box"));
+                WebElement element = weizhanBox.get(3);
+                WebElement re = element.findElement(By.cssSelector("p.btn-p"));
+                re.click();
+            } else {
+                List<WebElement> weizhanBox = driver.findElements(By.cssSelector("div.weizhang-box"));
+                WebElement element = weizhanBox.get(2);
+                WebElement re = element.findElement(By.cssSelector("p.btn-p"));
+                re.click();
+            }
 
         } catch (InterruptedException e) {
             e.printStackTrace();
