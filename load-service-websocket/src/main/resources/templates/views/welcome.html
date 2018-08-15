@@ -39,18 +39,17 @@
     </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
 <!---->
-<center>
-    <div class="table-juzhong">
-        <table class="table table-bordered" style="height: 500px;width: 500px">
-            <tr>
-                <th>sss</th>
-            </tr>
-        </table>
-    </div>
-</center>
+<div class="table-juzhong" align="center">
+    <table class="table table-bordered" style="height: 500px;width: 500px">
+        <tr>
+            <th>hello world</th>
+            <th id="view"></th>
+        </tr>
+    </table>
+</div>
 
 
-<div class="send"  style="width: 1000px">
+<div class="send"  style="width: 1000px;">
 <div class="col-lg-6">
     <div class="input-group">
         <input type="text" class="form-control" id="chatText" placeholder="发送消息...">
@@ -77,10 +76,10 @@
             var userId =$("#inpVal").val();
             console.log(userId);
             $.ajax({
-                url: "http://localhost:8082/login/"+userId,
+                url: "http://localhost:8017/login/"+userId,
                 success: function (result) {
                     console.log(result);
-                    var ws = new WebSocket("ws://localhost:8082/myHandler");
+                    var ws = new WebSocket("ws://localhost:8017/myHandler");
                     ws.onopen = function () {
                         console.log("onpen");
                         ws.send("{}");
@@ -91,18 +90,21 @@
 
                     ws.onmessage = function (msg) {
                         console.log(msg.data);
+                        view(msg.data);
                     }
                 }
             });
         });
-
+        function view(data){
+            $("#view").append(data)
+        }
         $("#chat").click(function () {
             var userId =$("#inpVal").val();
             var message = $("#chatText").val();
             console.log(message);
            // location.href="http://localhost:8082/message?message="+message;
             $.ajax({
-                url: "http://localhost:8082/message",
+                url: "http://localhost:8017/message",
                 data: {"id":userId,"message":message},
                 success: function (data) {
                     console.log(data)

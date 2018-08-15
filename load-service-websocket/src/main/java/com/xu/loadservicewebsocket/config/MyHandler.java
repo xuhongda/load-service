@@ -1,4 +1,4 @@
-package com.xu.loadservicewebsocket.websocket;
+package com.xu.loadservicewebsocket.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

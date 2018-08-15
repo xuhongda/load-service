@@ -1,4 +1,4 @@
-package com.xu.loadservicewebsocket.websocket;
+package com.xu.loadservicewebsocket.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
