@@ -27,10 +27,6 @@ public class MyHandler extends TextWebSocketHandler {
      * 在线用户列表
      */
     private static final List<WebSocketSession> sessions;
-    /**
-     * 用户标识
-     */
-    private static final String CLIENT_ID = "userId";
 
     static {
         sessions = new ArrayList<>();
@@ -46,7 +42,7 @@ public class MyHandler extends TextWebSocketHandler {
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) {
         // ...
-        logger.info("message",message.getPayload());
+        logger.info("message={}", message.getPayload());
         WebSocketMessage message1 = new TextMessage("server:"+message);
         try {
             session.sendMessage(message1);
@@ -56,31 +52,6 @@ public class MyHandler extends TextWebSocketHandler {
     }
 
 
-
-    /**
-     * 广播信息
-     * @param message
-     * @return
-     */
-   /* public boolean sendMessageToAllUsers(TextMessage message) {
-        boolean allSendSuccess = true;
-        Set<Integer> clientIds = map.keySet();
-        WebSocketSession session = null;
-        for (Integer clientId : clientIds) {
-            try {
-                session = map.get(clientId);
-                if (session.isOpen()) {
-                    session.sendMessage(message);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                allSendSuccess = false;
-            }
-        }
-
-        return  allSendSuccess;
-    }*/
-    
     
     public void  push(TextMessage message) throws IOException {
         if (!sessions.isEmpty()){
@@ -98,32 +69,16 @@ public class MyHandler extends TextWebSocketHandler {
             session.close();
         }
         logger.info("连接出错");
-        sessions.remove(getClientId(session));
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-        logger.info("连接已关闭:",status);
-        sessions.remove(getClientId(session));
+        logger.info("连接已关闭={}", status);
     }
 
     @Override
     public boolean supportsPartialMessages() {
         return false;
-    }
-
-    /**
-     * 获取用户标识
-     * @param session
-     * @return
-     */
-    private Integer getClientId(WebSocketSession session) {
-        try {
-            Integer clientId = (Integer) session.getAttributes().get(CLIENT_ID);
-            return clientId;
-        } catch (Exception e) {
-            return null;
-        }
     }
 
 }
