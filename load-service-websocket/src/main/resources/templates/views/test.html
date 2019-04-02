@@ -3,30 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>test</title>
-    <link rel="stylesheet" type="text/css" href="/jqueryChat/font_Icon/iconfont.css">
-    <link rel="stylesheet" type="text/css" href="/jqueryChat/css/chat.css">
 </head>
 <body>
-测试
-    <script>
-        $.ajax({
-            url: "http://localhost:8082/date",
-            success: function (result) {
-                console.log(result);
-                var ws = new WebSocket("ws://localhost:8082/myHandler");
-                ws.onopen = function () {
-                    console.log("onpen");
-                    ws.send("{}");
-                };
-                ws.onclose = function () {
-                    console.log("onclose");
-                };
-
-                ws.onmessage = function (msg) {
-                    console.log(msg.data);
-                }
-            }
-        });
-    </script>
+<script>
+    var obj ={"stationId":null,"stationName":null,"deviceId":"12345","vehicleId":null,"rfId":"Tue Apr 02 18:10:01 CST 2019","plateNo":null,"fuelType":null,"price":3.23,"fuelQuantity":null,"totalFee":null};
+    alert(obj.rfId);
+</script>
 </body>
 </html>

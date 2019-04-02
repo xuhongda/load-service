@@ -23,7 +23,10 @@ public class WelcomeController {
     public String chat(){
         return "chat";
     }
-
+    @GetMapping("gid")
+    public String xx(){
+        return "gid";
+    }
     @ResponseBody
     @GetMapping("test")
     public String test(){

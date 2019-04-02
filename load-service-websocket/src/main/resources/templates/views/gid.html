@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>gid</title>
+    <style>
+        #table-show {
+            width: 100%;
+            height: 45%;
+            border: 1px solid #ff7455;
+        }
+
+        #tr1 {
+            width: 100%;
+            height: 45%;
+            border: 1px solid #ff7455;
+        }
+
+        #tr2 {
+            width: 100%;
+            height: 45%;
+            border: 1px solid #ff7455;
+        }
+
+        .no {
+            font-size: 400%;
+            color: #000000;
+            font-family: "Microsoft YaHei UI", "Georgia", "Adobe Fan Heiti Std B", serif;
+            font-weight: 600;
+        }
+
+        .text {
+            font-size: 150%;
+            color: #000000;
+            font-family: "Microsoft YaHei UI", serif;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+
+        .text2 {
+            font-size: 150%;
+            color: #000000;
+            font-family: "Microsoft YaHei UI", serif;
+            font-weight: bold;
+        }
+
+        .text3 {
+            font-size: 150%;
+            color: #13E070;
+            font-family: "Microsoft YaHei UI", serif;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+
+        .text4 {
+            font-size: 150%;
+            color: #d82e56;
+            font-family: "Microsoft YaHei UI", serif;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+
+        .loading {
+            height: 50px;
+            width: 50px;
+        }
+
+        input {
+            font-size: xx-large;
+            margin: 0 auto;
+            padding: 0;
+            overflow: hidden;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 21px; /* 圆角边框 */
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            box-sizing: border-box;
+            border: 3px solid transparent;
+            background-clip: padding-box, border-box;
+            background-origin: padding-box, border-box;
+            background-image: linear-gradient(180deg, #FAFAFA, #FAFAFA), linear-gradient(100deg, #00F5FF, #FF8F23);
+        }
+
+        /* 定义keyframe动画，命名为blink */
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* 添加兼容性前缀 */
+        @-webkit-keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-moz-keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-ms-keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-o-keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* 定义blink类*/
+        .blink {
+            color: #13E070;
+            animation: blink 1s linear infinite;
+            /* 其它浏览器兼容性前缀 */
+            -webkit-animation: blink 1s linear infinite;
+            -moz-animation: blink 1s linear infinite;
+            -ms-animation: blink 1s linear infinite;
+            -o-animation: blink 1s linear infinite;
+        }
+    </style>
+</head>
+<script type="text/javascript" src="/jquery/jquery-3.2.1.js"></script>
+<body>
+<link rel="stylesheet" type="text/css" href="/css/loading.css">
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+
+<link rel="stylesheet" href="/bootStrap3/css/bootstrap.css"/>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/bootStrap3/js/bootstrap.js"></script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<!--<link rel="stylesheet" href="fontawesome-free-5.8.1-web/css/all.min.css">-->
+<div id="show" class="container-fluid">
+    <div id="table-1">
+        <table id="table-show" class="table table-bordered">
+            <tr id="tr1" class="info">
+                <td class="active" id="1">
+                    <div>
+                        <form class="form-inline">
+                            <table>
+                                <tr>
+                                    <td rowspan="2"><span class="no">1</span></td>
+                                    <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
+                                    <td><span class="text">92#汽油&nbsp;&nbsp;6.98(元/升)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text3 blink" id="1-plate">等待中&nbsp;<i class="fas fa-gas-pump"></i></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <br/>
+                    <form class="form-horizontal">
+                        <table>
+                            <tr>
+                                <td><label><span class="text2">油量&nbsp;</span></label><label><input type="text"
+                                                                                                    value="0.00"
+                                                                                                    id="1-oil"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;升</span></label></td>
+                                <td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td rowspan="2">
+                                    <div id="1-loading" class="loading">
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label><span class="text2">金额&nbsp;</span></label><label><input type="text"
+                                                                                                    value="0.00"
+                                                                                                    id="1-money"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;元</span></label></td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+
+                <td class="active" id="2">
+                    <form class="form-inline">
+                        <table>
+                            <tr>
+                                <td rowspan="2"><span class="no">2</span></td>
+                                <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
+                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text3 blink" id="2-plate">等待中&nbsp;<i
+                                        class="fas fa-gas-pump"></i></span></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <br/>
+                    <form class="form-horizontal">
+                        <table>
+                            <tr>
+                                <td><label><span class="text2">油量&nbsp;</span></label><label><input type="text"
+                                                                                                    value="0.00"
+                                                                                                    id="2-oil"
+                                                                                                    style="color: #F33820"/><span
+                                        class="text2">&nbsp;&nbsp;升</span> </label></td>
+                                <td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td rowspan="2">
+                                    <div id="2-loading" class="loading">
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label><span class="text2">金额&nbsp;</span></label><label><input type="text"
+                                                                                                    value="0.00"
+                                                                                                    id="2-money"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;元</span></label></td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+                <td class="active" id="3">
+                    <form class="form-inline">
+                        <table>
+                            <tr>
+                                <td rowspan="2"><span class="no">3</span></td>
+                                <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
+                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text3 blink" id="3-plate">等待中&nbsp;<i
+                                        class="fas fa-gas-pump"></i></span></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <br/>
+                    <form class="form-horizontal">
+                        <table>
+                            <tr>
+                                <td><label><span class="text2">油量&nbsp;</span></label><label><input type="text"
+                                                                                                    value="0.00"
+                                                                                                    id="3-oil"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;升</span></label></td>
+                                <td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td rowspan="2">
+                                    <div id="3-loading" class="loading">
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label><span class="text2">金额&nbsp;</span></label><label><input type="text"
+                                                                                                    id="3-money"
+                                                                                                    value="0.00"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;元</span></label></td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+                <td class="active" id="4">
+                    <form class="form-inline">
+                        <table>
+                            <tr>
+                                <td rowspan="2"><span class="no">4</span></td>
+                                <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
+                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text3 blink" id="4-plate">等待中&nbsp;<i
+                                        class="fas fa-gas-pump"></i></span></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <br/>
+                    <form class="form-horizontal">
+                        <table>
+                            <tr>
+                                <td><label><span class="text2">油量&nbsp;</span></label><label><input type="text"
+                                                                                                    id="4-oil"
+                                                                                                    value="0.00"
+                                                                                                    style="color: #F33820"><span
+                                        class="text2">&nbsp;&nbsp;升</span></label></td>
+                                <td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td rowspan="2">
+                                    <div id="4-loading" class="loading">
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label><span class="text2">金额&nbsp;</span></label><label><input type="text"
+                                                                                                    id="4-money"
+                                                                                                    value="0.00"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;元</span></label></td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+            </tr>
+
+            <tr id="tr2" class="info">
+                <td class="active" id="5">
+                    <form class="form-inline">
+                        <table>
+                            <tr>
+                                <td rowspan="2"><span class="no">5</span></td>
+                                <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
+                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text3 blink" id="5-plate">等待中&nbsp;<i
+                                        class="fas fa-gas-pump"></i></span></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <br/>
+                    <form class="form-horizontal">
+                        <table>
+                            <tr>
+                                <td><label><span class="text2">油量&nbsp;</span></label><label><input type="text"
+                                                                                                    id="5-oil"
+                                                                                                    value="0.00"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;升</span></label></td>
+                                <td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td rowspan="2">
+                                    <div id="5-loading" class="loading">
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label><span class="text2">金额&nbsp;</span></label><label><input type="text"
+                                                                                                    id="5-money"
+                                                                                                    value="0.00"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;元</span></label></td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+
+                <td class="active" id="6">
+                    <form class="form-inline">
+                        <table>
+                            <tr>
+                                <td rowspan="2"><span class="no">6</span></td>
+                                <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
+                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text3 blink" id="6-plate">等待中&nbsp;<i
+                                        class="fas fa-gas-pump"></i></span></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <br/>
+                    <form class="form-horizontal">
+                        <table>
+                            <tr>
+                                <td><label><span class="text2">油量&nbsp;</span></label><label><input type="text"
+                                                                                                    id="6-oil"
+                                                                                                    value="0.00"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;升</span></label></td>
+                                <td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td rowspan="2">
+                                    <div class="loading" id="6-loading">
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label><span class="text2">金额&nbsp;</span></label><label><input type="text"
+                                                                                                    id="6-money"
+                                                                                                    value="0.00"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;元</span></label></td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+                <td class="active" id="7">
+                    <form class="form-inline">
+                        <table>
+                            <tr>
+                                <td rowspan="2"><span class="no">7</span></td>
+                                <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
+                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text3 blink" id="7-plate">等待中&nbsp;<i
+                                        class="fas fa-gas-pump"></i></span></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <br/>
+                    <form class="form-horizontal">
+                        <table>
+                            <tr>
+                                <td><label><span class="text2">油量&nbsp;</span></label><label><input type="text"
+                                                                                                    value="0.00"
+                                                                                                    id="7-oil"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;升</span></label></td>
+                                <td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td rowspan="2">
+                                    <div id="7-loading" class="loading">
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label><span class="text2">金额&nbsp;</span></label><label><input type="text"
+                                                                                                    id="7-money"
+                                                                                                    value="0.00"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;元</span></label></td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+                <td class="active" id="8">
+                    <form class="form-inline">
+                        <table>
+                            <tr>
+                                <td rowspan="2"><span class="no">8</span></td>
+                                <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
+                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="text3 blink" id="8-plate">等待中&nbsp;<i
+                                        class="fas fa-gas-pump"></i></span></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <br/>
+                    <form class="form-horizontal">
+                        <table>
+                            <tr>
+                                <td><label><span class="text2">油量&nbsp;</span></label><label><input type="text"
+                                                                                                    id="8-oil"
+                                                                                                    value="0.00"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;升</span></label></td>
+                                <td rowspan="2">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td rowspan="2">
+                                    <div id="8-loading" class="loading">
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label><span class="text2">金额&nbsp;</span></label><label><input type="text"
+                                                                                                    id="8-money"
+                                                                                                    value="0.00"
+                                                                                                    style="color: #F33820">
+                                    <span class="text2">&nbsp;&nbsp;元</span></label></td>
+                            </tr>
+                        </table>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="table-2" class="table-show">
+        <table class="table table-condensed">
+            <!-- On rows -->
+            <tr class="info text2" id="row-2-1">
+                <td>油枪</td>
+                <td>车牌</td>
+                <td>加油时间</td>
+                <td>油量（&nbsp;&nbsp;升）</td>
+                <td>燃油型</td>
+                <td>单价（&nbsp;&nbsp;元/&nbsp;&nbsp;升）</td>
+                <td>总金额（&nbsp;&nbsp;元）</td>
+                <td>优惠金额（&nbsp;&nbsp;元）</td>
+                <td>油枪标签</td>
+                <td>加油车架</td>
+                <td>结束时间</td>
+            </tr>
+            <tr class="active">
+                <td>1</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+            </tr>
+            <tr class="warning">
+                <td>2</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+                <td>3</td>
+            </tr>
+            <tr class="active">
+                <td>3</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+                <td>4</td>
+            </tr>
+            <tr class="warning">
+                <td>4</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+            <tr class="active">
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+            <tr class="warning">
+                <td>6</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+            <tr class="active">
+                <td>7</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+            <tr class="warning">
+                <td>8</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
+
+<script>
+
+    /*#######################################################*/
+
+    $(function () {
+
+        webSocket();
+
+        function webSocket() {
+            if ("WebSocket" in window) {
+                console.log("浏览器支持 WebSocket!");
+                // 打开一个 web socket
+                var ws = new WebSocket("ws://localhost:8017/myHandler");
+
+                ws.onopen = function () {
+                    // Web Socket 已连接上，使用 send() 方法发送数据
+                    ws.send("发送数据");
+                    console.log("数据发送中...");
+                };
+
+                ws.onmessage = function (evt) {
+                    /*let parseJSON = $.parseJSON(evt);
+                    console.log(parseJSON.rfId);*/
+                    console.log(evt);
+                    var data = evt.data;
+                    console.log(">>>>>"+data);
+                    let s = JSON.stringify(data);
+                    console.log("========"+s);
+
+                    // var data = evt.data;
+                    /*var data = {
+                        stationId: 2,
+                        plateNo: "粤B77777",
+                        fuelType: 92
+                    };
+                    console.log("数据已接收..." + data.plateNo);
+                    getObj(data);*/
+                };
+
+                ws.onclose = function () {
+                    // 关闭 websocket
+                    console.log("连接已关闭...");
+                };
+            } else {
+                // 浏览器不支持 WebSocket
+                alert("您的浏览器不支持 WebSocket!");
+            }
+        }
+
+        function send() {
+            var data = {
+                stationId: 6,
+                plateNo: "粤B77777",
+                fuelType: 92
+            };
+            //ws.send(data);
+        }
+
+
+        /*var data1 = {
+            stationId: 6,
+            plateNo: "粤B77777",
+            fuelType: 92
+        };
+
+        var data2 = {
+            stationId: 1,
+            plateNo: "粤B77777",
+            fuelType: 92
+        };
+
+        var data3 = {
+            stationId: 3,
+            plateNo: "粤B77777",
+            fuelType: 92
+        };
+
+        // getObj(data);
+        getObj(data1);
+        getObj(data2);
+        getObj(data3);*/
+
+        function getObj(data) {
+
+            /*拼接选择器*/
+            var oil = "#" + data.stationId + "-oil";
+            var money = "#" + data.stationId + "-money";
+            var stationId = "#" + data.stationId;
+            var maxOil = data.fuelType;
+            var licencePlate = data.plateNo + "<i class=\"fas fa-car\"></i>";
+            var licencePlateSelect = "#" + data.stationId + "-plate";
+            var loading = "#" + data.stationId + "-loading";
+
+            /*选择器*/
+            var selectedOil = $(oil);
+            var selectedMoney = $(money);
+            var selectedColor = $(stationId);
+            var selectedLoading = $(loading);
+            var selectedLicencePlate = $(licencePlateSelect);
+
+            /*start*/
+            toRefuel(licencePlate, selectedLicencePlate, selectedOil, selectedMoney, maxOil, selectedLoading, selectedColor);
+        }
+
+        var random = 0;
+
+        function toRefuel(licencePlate, selectedLicencePlate, oil, money, maxOil, loading, color) {
+            /*数字清零*/
+            resumeNum(oil);
+            /*数字清零*/
+            resumeNum(money);
+            upOil(licencePlate, selectedLicencePlate, maxOil, oil, loading, color, money);
+            upMoney(maxOil * 6.98, money, color);
+            loading.addClass("lds-ripple");
+            color.toggleClass("danger");
+        }
+
+        /*油量*/
+        function upOil(licencePlate, selectedLicencePlate, maxOil, selectedOil, loading, color, money) {
+            showLicencePlate(selectedLicencePlate, licencePlate);
+            var start = 0.00;
+            var time2 = setInterval(function () {
+                random = getRandom(12);
+                start = start + getRandom(12);
+                if (start > maxOil) {
+                    start = maxOil;
+                    clearInterval(time2);
+                    /*加到目标油量窗口闪烁*/
+                    changeColor(loading, color, selectedLicencePlate, selectedOil, money);
+
+                }
+                selectedOil.attr("value", start.toFixed(2))
+            }, 100);
+        }
+
+        function showLicencePlate(selectedLicencePlate, licencePlate) {
+            selectedLicencePlate.removeClass("blink");
+            selectedLicencePlate.addClass("text4");
+            selectedLicencePlate.html(licencePlate);
+        }
+
+        /*金额*/
+        function upMoney(maxOil, selectedMoney) {
+            let start = 0.00;
+            const time1 = setInterval(function () {
+                start = start + random * 6.98;
+                if (start > maxOil) {
+                    start = maxOil;
+                    clearInterval(time1);
+                }
+                selectedMoney.attr("value", start.toFixed(2))
+            }, 100);
+        }
+
+        /*加满油方块区域闪烁*/
+        function changeColor(loading, selected, selectedLicencePlate, selectedOil, money) {
+            /*动画效果停止*/
+            $(loading).hide();
+            let timesRun = 0;
+            const interval = setInterval(function () {
+                timesRun += 1;
+                if (timesRun === 10) {
+                    clearInterval(interval);
+                    resumeColor(selected);
+                    /*停止闪烁，数字清零*/
+                    // resumeNum(selectedOil);
+                    /*停止闪烁，数字清零*/
+                    // resumeNum(money);
+                    /*恢复车牌*/
+                    resumePlate(selectedLicencePlate);
+                    /*恢复车牌样式*/
+                    selectedLicencePlate.addClass("blink");
+                }
+                selected.toggleClass("danger");
+            }, 520);
+
+        }
+
+        function resumePlate(selectedLicencePlate) {
+            selectedLicencePlate.removeClass("text4");
+            selectedLicencePlate.html("等待中&nbsp;<i class=\"fas fa-gas-pump\"></i>");
+        }
+
+        /*随机获取一个值*/
+        function getRandom(n) {
+            return Math.floor(Math.random() * n / 3 + 0.7)
+        }
+
+        /*重置值为零*/
+        function resumeNum(selected) {
+            selected.attr("value", "0.00");
+        }
+
+        /*重置颜色*/
+        function resumeColor(selected) {
+            selected.removeClass("danger");
+            selected.addClass("danger");
+        }
+    });
+</script>
+</body>
+</html>
