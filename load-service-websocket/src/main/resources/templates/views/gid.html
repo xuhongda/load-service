@@ -153,8 +153,8 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="/bootStrap3/js/bootstrap.js"></script>
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">-->
 <!--<link rel="stylesheet" href="fontawesome-free-5.8.1-web/css/all.min.css">-->
 <div id="show" class="container-fluid">
     <div id="table-1">
@@ -167,7 +167,7 @@
                                 <tr>
                                     <td rowspan="2"><span class="no">1</span></td>
                                     <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                    <td><span class="text">92#汽油&nbsp;&nbsp;6.98(元/升)</span>
+                                    <td><span class="text" id="1-type">92#汽油 &nbsp;&nbsp;6.98(元/升)</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -211,7 +211,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">2</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                                <td><span class="text" id="2-type">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="2-plate">等待中&nbsp;<i
@@ -252,7 +252,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">3</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                                <td><span class="text" id="3-type">97#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="3-plate">等待中&nbsp;<i
@@ -293,7 +293,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">4</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                                <td><span class="text" id="4-type">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="4-plate">等待中&nbsp;<i
@@ -337,7 +337,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">5</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                                <td><span class="text" id="5-type">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="5-plate">等待中&nbsp;<i
@@ -379,7 +379,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">6</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                                <td><span class="text" id="6-type">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="6-plate">等待中&nbsp;<i
@@ -420,7 +420,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">7</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                                <td><span class="text" id="7-type">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="7-plate">等待中&nbsp;<i
@@ -461,7 +461,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">8</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <td><span class="text">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
+                                <td><span class="text" id="8-type">92#汽油 &nbsp;&nbsp;6.98(元/升)</span></td>
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="8-plate">等待中&nbsp;<i
@@ -631,57 +631,73 @@
     /*#######################################################*/
 
     $(function () {
-
+        var ws;
         webSocket();
 
         function webSocket() {
             if ("WebSocket" in window) {
                 console.log("浏览器支持 WebSocket!");
                 // 打开一个 web socket
-                var ws = new WebSocket("ws://localhost:8017/myHandler");
+                ws = new WebSocket("ws://localhost:8017/myHandler");
 
                 ws.onopen = function () {
                     // Web Socket 已连接上，使用 send() 方法发送数据
-                    ws.send("发送数据");
+                    // ws.send("发送数据");
+                    var data = {
+                        "stationId": "1",
+                        "stationName": "1",
+                        "deviceId": "30011401302",
+                        "vehicleId": "000420524c3f4931a2c2755c9b8281fa",
+                        "rfId": "e20000193119018121103bb0",
+                        "plateNo": "迪V01302",
+                        "fuelType": 99,
+                        "price": 7.15,
+                        "simulationType": 0
+                    };
+                    ws.send(JSON.stringify(data));
+                    sendObj();
                     console.log("数据发送中...");
                 };
 
                 ws.onmessage = function (evt) {
-                    /*let parseJSON = $.parseJSON(evt);
-                    console.log(parseJSON.rfId);*/
+
                     console.log(evt);
                     var data = evt.data;
-                    console.log(">>>>>"+data);
-                    let s = JSON.stringify(data);
-                    console.log("========"+s);
-
-                    // var data = evt.data;
-                    /*var data = {
-                        stationId: 2,
-                        plateNo: "粤B77777",
-                        fuelType: 92
-                    };
-                    console.log("数据已接收..." + data.plateNo);
-                    getObj(data);*/
+                    let obj = eval('(' + data + ')');
+                    console.log("eval--->>>" + obj);
+                    getObj(obj);
                 };
 
                 ws.onclose = function () {
                     // 关闭 websocket
                     console.log("连接已关闭...");
                 };
+
+                ws.onerror = function () {
+                    console.log("error...");
+                }
             } else {
                 // 浏览器不支持 WebSocket
                 alert("您的浏览器不支持 WebSocket!");
             }
         }
 
-        function send() {
+
+        /*向 webSocket 服务端 发送消息*/
+        function sendObj() {
             var data = {
-                stationId: 6,
-                plateNo: "粤B77777",
-                fuelType: 92
+                "stationId": "8",
+                "stationName": "1",
+                "deviceId": "30011401302",
+                "vehicleId": "000420524c3f4931a2c2755c9b8281fa",
+                "rfId": "e20000193119018121103bb0",
+                "plateNo": "迪V01302",
+                "fuelType": 92,
+                "price": 7.15,
+                "simulationType": 0
             };
-            //ws.send(data);
+            ws.send(JSON.stringify(data));
+
         }
 
 
@@ -709,7 +725,7 @@
         getObj(data3);*/
 
         function getObj(data) {
-
+            console.log("<><>data" + data);
             /*拼接选择器*/
             var oil = "#" + data.stationId + "-oil";
             var money = "#" + data.stationId + "-money";
@@ -718,34 +734,38 @@
             var licencePlate = data.plateNo + "<i class=\"fas fa-car\"></i>";
             var licencePlateSelect = "#" + data.stationId + "-plate";
             var loading = "#" + data.stationId + "-loading";
+            var fuelType = "#" + data.stationId + "-type";
 
+            console.log(stationId);
             /*选择器*/
             var selectedOil = $(oil);
             var selectedMoney = $(money);
             var selectedColor = $(stationId);
             var selectedLoading = $(loading);
             var selectedLicencePlate = $(licencePlateSelect);
+            var selectedFuelType = $(fuelType);
 
             /*start*/
-            toRefuel(licencePlate, selectedLicencePlate, selectedOil, selectedMoney, maxOil, selectedLoading, selectedColor);
+            toRefuel(licencePlate, selectedLicencePlate, selectedOil, selectedMoney, maxOil, selectedLoading, selectedColor, selectedFuelType, data);
         }
 
         var random = 0;
 
-        function toRefuel(licencePlate, selectedLicencePlate, oil, money, maxOil, loading, color) {
+        function toRefuel(licencePlate, selectedLicencePlate, oil, money, maxOil, loading, color, selectedFuelType, data) {
             /*数字清零*/
             resumeNum(oil);
             /*数字清零*/
             resumeNum(money);
-            upOil(licencePlate, selectedLicencePlate, maxOil, oil, loading, color, money);
+            upOil(licencePlate, selectedLicencePlate, maxOil, oil, loading, color, money, selectedFuelType, data);
             upMoney(maxOil * 6.98, money, color);
             loading.addClass("lds-ripple");
             color.toggleClass("danger");
         }
 
         /*油量*/
-        function upOil(licencePlate, selectedLicencePlate, maxOil, selectedOil, loading, color, money) {
+        function upOil(licencePlate, selectedLicencePlate, maxOil, selectedOil, loading, color, money, selectedFuelType, data) {
             showLicencePlate(selectedLicencePlate, licencePlate);
+            showFuelType(selectedFuelType, data);
             var start = 0.00;
             var time2 = setInterval(function () {
                 random = getRandom(12);
@@ -759,6 +779,10 @@
                 }
                 selectedOil.attr("value", start.toFixed(2))
             }, 100);
+        }
+
+        function showFuelType(selectedFuelType, data) {
+            selectedFuelType.html(data.fuelType + "#&nbsp;" + data.price + "(元/升)")
         }
 
         function showLicencePlate(selectedLicencePlate, licencePlate) {

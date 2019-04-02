@@ -9,7 +9,6 @@
         <artifactId>load-service-component</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.xu</groupId>
     <artifactId>load-service-pojo</artifactId>
     <dependencies>
         <dependency>

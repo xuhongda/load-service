@@ -1,8 +1,10 @@
 package com.xu.loadservicewebsocket.websocket;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xu.loadservicewebsocket.component.Car;
 import com.xu.loadservicewebsocket.component.MySchedule;
+import com.xu.loadservicewebsocket.component.People;
 import com.xu.loadservicewebsocket.config.MyHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,8 +40,6 @@ public class SocketController {
     private MySchedule mySchedule;
 
 
-
-
     @RequestMapping("/login/{userId}")
     public @ResponseBody String login(HttpSession session, @PathVariable("userId") Integer userId) {
         logger.info("登录接口,userId={}",userId);
@@ -48,28 +48,16 @@ public class SocketController {
         return "success";
     }
 
-   /* @RequestMapping("/message")
-    public @ResponseBody String sendMessage(Integer id,String message) {
-        boolean hasSend = handler.sendMessageToUser(id, new TextMessage(message));
-        System.out.println("===========>>>>>"+hasSend);
-        return message;
-    }
-
-    @GetMapping("date")
-    public @ResponseBody Date date(){
-        boolean b = handler.sendMessageToUser(3, new TextMessage(new Date().toString()));
-        System.out.println(b);
-        return  new Date();
-    }*/
-
-
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 17000)
     public void push() throws IOException {
         Date date = new Date();
         Car car  = new Car();
-        car.setDeviceId("12345");
-        car.setPrice(3.23);
         car.setRfId(date.toString());
+        car.setStationId(3);
+        car.setFuelType("92");
+        car.setPlateNo("粤B77777");
+        car.setPrice(7.2);
+
         String s = objectMapper.writeValueAsString(car);
         logger.info("s={}",s);
         handler.push(new TextMessage(s));

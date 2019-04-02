@@ -1,7 +1,11 @@
 package com.xu.loadservicewebsocket.component;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * @author xuhongda on 2019/4/2
@@ -10,7 +14,9 @@ import lombok.ToString;
  */
 @Data
 @ToString
-public class Car {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Car implements Serializable {
 
     private Integer stationId;
 
@@ -24,12 +30,14 @@ public class Car {
 
     private String plateNo;
 
-    private Integer fuelType;
+    private String fuelType;
 
     private Double price;
 
     private Double fuelQuantity;
 
     private Double totalFee;
+
+    private String simulationType;
 
 }
