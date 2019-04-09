@@ -12,7 +12,7 @@
     </textarea>
 </label>
 
-<input type="button" value="发送" id="send-button">
+<label><input type="button" value="发送" id="send-button">&nbsp;<span id="tips" style="color: #2aabd2"></span></label>
 <script>
     $(function () {
         var ws;
@@ -48,8 +48,12 @@
         }
 
         $("#send-button").click(function () {
-            let val = $("#send").val();
-            ws.send(val);
+            let text = $("#send").text();
+            ws.send(text);
+            $("#tips").html("发送成功");
+            setTimeout(function () {
+                $("#tips").html("")
+            }, 500);
         })
     });
 </script>

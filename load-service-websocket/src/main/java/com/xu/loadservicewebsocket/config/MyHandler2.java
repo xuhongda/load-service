@@ -35,7 +35,6 @@ public class MyHandler2 extends TextWebSocketHandler {
         synchronized (num) {
             num++;
         }
-        ;
         log.info("{}=成功建立连接", num);
         sessions.put(num.toString(), session);
         Map<String, Object> attributes = session.getAttributes();
@@ -96,6 +95,21 @@ public class MyHandler2 extends TextWebSocketHandler {
                 log.info("在线session 数量 = {}", i);
                 log.info("推送-->>>num = {}", i);
                 handleTextMessage(webSocketSession, textMessage);
+            }
+        }
+    }
+
+    /**
+     * 群发
+     */
+    public void pushAll(TextMessage textMessage) throws IOException {
+
+        if (!sessions.isEmpty()) {
+            Iterator<Map.Entry<String, WebSocketSession>> iterator = sessions.entrySet().iterator();
+            while (iterator.hasNext()) {
+                WebSocketSession session = iterator.next().getValue();
+                handleTextMessage(session, textMessage);
+                log.info("session={}", session);
             }
         }
     }

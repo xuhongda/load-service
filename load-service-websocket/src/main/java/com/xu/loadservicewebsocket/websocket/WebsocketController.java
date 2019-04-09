@@ -56,6 +56,6 @@ public class WebsocketController {
         car.setPrice(7.7);
         String s = mapper.writeValueAsString(car);
         log.info("s={}", s);
-        myHandler2.push(new TextMessage(s));
+        myHandler2.pushAll(new TextMessage(s));
     }
 }
