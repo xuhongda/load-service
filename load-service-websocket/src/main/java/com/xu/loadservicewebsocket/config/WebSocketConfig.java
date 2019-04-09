@@ -19,6 +19,12 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(myHandler(), "/myHandler").addInterceptors(new WebSocketInterceptor());
+        registry.addHandler(myHandler2(), "/myHandler2").addInterceptors(new WebSocketInterceptor());
+    }
+
+    @Bean
+    public WebSocketHandler myHandler2() {
+        return new MyHandler2();
     }
 
     @Bean

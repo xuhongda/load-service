@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script type="text/javascript" src="/jquery/jquery-3.2.1.js"></script>
+</head>
+<body>
+<label>
+    <textarea id="send">
+
+    </textarea>
+</label>
+
+<input type="button" value="发送" id="send-button">
+<script>
+    $(function () {
+        var ws;
+        webSocket();
+
+        function webSocket() {
+            if ("WebSocket" in window) {
+                console.log("浏览器支持 WebSocket!");
+                // 打开一个 web socket
+                ws = new WebSocket("ws://localhost:8017/myHandler2");
+
+                ws.onopen = function () {
+                };
+
+                ws.onmessage = function (evt) {
+                    let data = evt.data;
+                    let obj = eval('(' + data + ')');
+                    console.log(obj)
+                };
+
+                ws.onclose = function () {
+                    // 关闭 websocket
+                    console.log("连接已关闭...");
+                };
+
+                ws.onerror = function () {
+                    console.log("error...");
+                }
+            } else {
+                // 浏览器不支持 WebSocket
+                alert("您的浏览器不支持 WebSocket!");
+            }
+        }
+
+        $("#send-button").click(function () {
+            let val = $("#send").val();
+            ws.send(val);
+        })
+    });
+</script>
+</body>
+</html>

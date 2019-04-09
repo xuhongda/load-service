@@ -48,18 +48,5 @@ public class SocketController {
         return "success";
     }
 
-    @Scheduled(fixedDelay = 7000)
-    public void push() throws IOException {
-        Date date = new Date();
-        Car car  = new Car();
-        car.setRfId(date.toString());
-        car.setStationId(3);
-        car.setFuelType("99");
-        car.setPlateNo("粤B88888");
-        car.setPrice(7.7);
 
-        String s = objectMapper.writeValueAsString(car);
-        logger.info("s={}",s);
-        handler.push(new TextMessage(s));
-    }
 }
