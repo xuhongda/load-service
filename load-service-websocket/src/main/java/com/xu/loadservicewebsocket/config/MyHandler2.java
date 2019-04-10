@@ -1,5 +1,6 @@
 package com.xu.loadservicewebsocket.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.CloseStatus;
@@ -20,7 +21,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class MyHandler2 extends TextWebSocketHandler {
 
-    private Long num = 0L;
+    private volatile Long num = 0L;
+
+    private ObjectMapper mapper = new ObjectMapper();
 
     /**
      * 在线用户列表
@@ -36,6 +39,7 @@ public class MyHandler2 extends TextWebSocketHandler {
             num++;
         }
         log.info("{}=成功建立连接", num);
+        log.info("remoteAddress = {}",session.getRemoteAddress());
         sessions.put(num.toString(), session);
         Map<String, Object> attributes = session.getAttributes();
         log.info("attributes = {}", attributes);
@@ -54,6 +58,7 @@ public class MyHandler2 extends TextWebSocketHandler {
             session.sendMessage(message);
         } catch (IOException e) {
             e.printStackTrace();
+            log.info(e.getMessage());
         }
     }
 
@@ -65,7 +70,7 @@ public class MyHandler2 extends TextWebSocketHandler {
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         log.info("连接已关闭={}", status);
 
-        List<String> removeSessions = new ArrayList();
+        List<String> removeSessions = new ArrayList<>();
 
         Set<Map.Entry<String, WebSocketSession>> entries = sessions.entrySet();
         for (Map.Entry<String, WebSocketSession> o : entries) {

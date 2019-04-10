@@ -7,9 +7,10 @@
 </head>
 <body>
 <label>
-    <textarea id="send">
+    <textarea autofocus id="send" maxlength="150">
 
     </textarea>
+    <!--<input type="text" value="" id="send">-->
 </label>
 
 <label><input type="button" value="发送" id="send-button">&nbsp;<span id="tips" style="color: #2aabd2"></span></label>
@@ -29,8 +30,8 @@
 
                 ws.onmessage = function (evt) {
                     let data = evt.data;
-                    let obj = eval('(' + data + ')');
-                    console.log(obj)
+                   // let obj = eval('(' + data + ')');
+                   // console.log(obj)
                 };
 
                 ws.onclose = function () {
@@ -48,12 +49,12 @@
         }
 
         $("#send-button").click(function () {
-            let text = $("#send").text();
+            var text = $("#send").val();
             ws.send(text);
             $("#tips").html("发送成功");
             setTimeout(function () {
                 $("#tips").html("")
-            }, 500);
+            }, 800);
         })
     });
 </script>

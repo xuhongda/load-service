@@ -45,7 +45,7 @@ public class WebsocketController {
     }
 
 
-    @Scheduled(fixedDelay = 9000)
+    //@Scheduled(fixedDelay = 9000)
     public void push() throws IOException {
         Date date = new Date();
         Car car = new Car();
