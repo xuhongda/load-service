@@ -7,11 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.util.*;
 
@@ -29,7 +27,7 @@ public class MyHandler extends TextWebSocketHandler {
     /**
      * 在线用户列表
      */
-    private static final List<WebSocketSession> sessions;
+    private static  List<WebSocketSession> sessions;
 
     static {
         sessions = new ArrayList<>();
@@ -41,9 +39,7 @@ public class MyHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         logger.info("成功建立连接");
-        //session.sendMessage(new TextMessage("成功建立socket连接"));
-        Map<String, Object> attributes = session.getAttributes();
-        logger.info("attributes = {}", attributes);
+        session.sendMessage(new TextMessage("成功建立socket连接"));
         sessions.add(session);
     }
 
