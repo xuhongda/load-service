@@ -39,6 +39,16 @@ public class WebsocketController {
         return "gid";
     }
 
+    @GetMapping("test")
+    public String test(){
+        return "test";
+    }
+
+    @GetMapping("refuel-new")
+    public String refuel(){
+        return "refuel-new";
+    }
+
     @GetMapping("websocket")
     public String websocket() {
         return "websocket";

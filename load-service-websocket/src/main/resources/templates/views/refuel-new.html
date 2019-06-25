@@ -1,11 +1,4 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%
-    String path = request.getContextPath();
-    String basePath = request.getServerName() + ":" + request.getServerPort() + path + "/";
-    String baseUrlPath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -152,16 +145,15 @@
             -o-animation: blink 1s linear infinite;
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="static/loading.css">
+    <link rel="stylesheet" type="text/css" href="/css/loading.css">
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="static/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/bootStrap3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <link rel="stylesheet" href="static/fontawesome-free-5.8.1-web/css/all.min.css">
+    <link rel="stylesheet" href="/fontawesome-free-5.8.1-web/css/all.min.css">
 
 </head>
-<script type="text/javascript" src="static/jquery.js"></script>
-<script type="text/javascript" src="media/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/jquery/jquery-3.2.1.js"></script>
 <body>
 
 <div id="show" class="container-fluid">
@@ -174,7 +166,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">1</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <%--<td><span class="text" id="2-type"></span></td>--%>
+                                
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="1-plate">空闲&nbsp;<i
@@ -189,7 +181,7 @@
                             <tr>
                                 <td>
                                     <h1 id="t1-fueling-tip1" style="color: #4cd137;text-align: center">正在等待</h1>
-                                    <h1 id="t1-fueling-tip2" class="fueling">正在加油</h1>
+                                    <h1 id="t1-fueling-tip2" style="display: none;color: #4b7bec">正在加油</h1>
                                 </td>
                                 <td rowspan="2">
                                     <div id="1-loading" class="loading">
@@ -200,8 +192,8 @@
                             </tr>
                         </table>
 
-                        <table style="display: none;width: 100%;text-align: center" id="t1-fuel-end">
-                            <tr>
+                        <table style="width: 100%;text-align: center" id="t1-fuel-end">
+                            <!--<tr>
                                 <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
                                     <label><input type="text" id="1-money" class="input-show">
                                         <span class="text2">&nbsp;&nbsp;元</span>
@@ -210,13 +202,13 @@
                                 <td>
                                     <button type="button" id="btn-1" class="btn btn-info">确认</button>
                                 </td>
-                            </tr>
+                            </tr>-->
                         </table>
                     </form>
                 </td>
 
 
-                <%--ex - start --%>
+                <!--<%&#45;&#45;ex - start &#45;&#45;%>-->
 
                 <td class="active td-show" id="2">
                     <form class="form-inline">
@@ -224,7 +216,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">2</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <%--<td><span class="text" id="2-type"></span></td>--%>
+                                
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="2-plate">空闲&nbsp;<i
@@ -250,8 +242,8 @@
                             </tr>
                         </table>
 
-                        <table style="display: none;width: 100%;text-align: center" id="t2-fuel-end">
-                            <tr>
+                        <table style="width: 100%;text-align: center" id="t2-fuel-end">
+                            <!--<tr>
                                 <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
                                     <label><input type="text" id="2-money" class="input-show">
                                         <span class="text2">&nbsp;&nbsp;元</span>
@@ -260,11 +252,11 @@
                                 <td>
                                     <button type="button" id="btn-2" class="btn btn-info">确认</button>
                                 </td>
-                            </tr>
+                            </tr>-->
                         </table>
                     </form>
                 </td>
-                <%--ex - end --%>
+               <!-- <%&#45;&#45;ex - end &#45;&#45;%>-->
 
 
                 <td class="active td-show" id="3">
@@ -273,7 +265,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">3</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <%--<td><span class="text" id="2-type"></span></td>--%>
+                                
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="3-plate">空闲&nbsp;<i
@@ -321,7 +313,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">4</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <%--<td><span class="text" id="2-type"></span></td>--%>
+                                
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="4-plate">空闲&nbsp;<i
@@ -371,7 +363,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">5</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <%--<td><span class="text" id="2-type"></span></td>--%>
+                                
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="5-plate">空闲&nbsp;<i
@@ -418,7 +410,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">6</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <%--<td><span class="text" id="2-type"></span></td>--%>
+                                
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="6-plate">空闲&nbsp;<i
@@ -466,7 +458,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">7</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <%--<td><span class="text" id="2-type"></span></td>--%>
+                                
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="7-plate">空闲&nbsp;<i
@@ -492,8 +484,8 @@
                             </tr>
                         </table>
 
-                        <table style="display: none;width: 100%;text-align: center" id="t7-fuel-end">
-                            <tr>
+                        <table style="width: 100%;text-align: center" id="t7-fuel-end">
+                           <!-- <tr>
                                 <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
                                     <label><input type="text" id="7-money" class="input-show">
                                         <span class="text2">&nbsp;&nbsp;元</span>
@@ -502,7 +494,7 @@
                                 <td>
                                     <button type="button" id="btn-7" class="btn btn-info">确认</button>
                                 </td>
-                            </tr>
+                            </tr>-->
                         </table>
                     </form>
                 </td>
@@ -513,7 +505,7 @@
                             <tr>
                                 <td rowspan="2"><span class="no">8</span></td>
                                 <td rowspan="2">&nbsp;<span></span>&nbsp;</td>
-                                <%--<td><span class="text" id="2-type"></span></td>--%>
+                                
                             </tr>
                             <tr>
                                 <td><span class="text3 blink" id="8-plate">空闲&nbsp;<i
@@ -715,7 +707,7 @@
 
 
 </div>
-<script src="static/layui/layui.js" charset="utf-8"></script>
+<script src="/layui/layui.js" charset="utf-8"></script>
 <script>
 
     /*#######################################################*/
@@ -724,12 +716,12 @@
     $(function () {
 
         /*测试使用数据 --- start*/
-        /*var data1 = {
+        var data1 = {
             "stationId": "2",
             "stationName": "1",
             "deviceId": "30011401302",
             "vehicleId": "000420524c3f4931a2c2755c9b8281fa",
-            "rfId": "e20000193119018121103bb0",
+            "rfId": "e20000193119018121103bb0TTT",
             "plateNo": "迪V013027",
             "fuelType": 92,
             "price": 7.15,
@@ -744,7 +736,7 @@
             "stationName": "1",
             "deviceId": "30011401302",
             "vehicleId": "000420524c3f4931a2c2755c9b8281fa",
-            "rfId": "e20000193119018121103bb0",
+            "rfId": "e20000193119018121103bb0TTT",
             "plateNo": "迪V013027",
             "fuelType": 92,
             "price": 7.15,
@@ -759,7 +751,7 @@
             "stationName": "1",
             "deviceId": "30011401302",
             "vehicleId": "000420524c3f4931a2c2755c9b8281fa",
-            "rfId": "e20000193119018121103bb0",
+            "rfId": "e20000193119018121103bb0XXX",
             "plateNo": "迪V01302",
             "fuelType": 92,
             "price": 7.15,
@@ -774,7 +766,7 @@
             "stationName": "1",
             "deviceId": "30011401302",
             "vehicleId": "000420524c3f4931a2c2755c9b8281fa",
-            "rfId": "e20000193119018121103bb0",
+            "rfId": "e20000193119018121103bb0XXX",
             "plateNo": "迪V01302",
             "fuelType": 92,
             "price": 7.15,
@@ -784,11 +776,46 @@
             "second": 22,
             "eventType": 0
         };
+
+
+        var data5 = {
+            "stationId": "1",
+            "stationName": "1",
+            "deviceId": "30011401302",
+            "vehicleId": "000420524c3f4931a2c2755c9b8281fa",
+            "rfId": "e20000193119018121103bbQQQ",
+            "plateNo": "迪V013QQ",
+            "fuelType": 92,
+            "price": 7.15,
+            "simulationType": 0,
+            "refuelQuantity": 120,
+            "maxPricel": 200,
+            "second": 22,
+            "eventType": 1
+        };
+
+        var data6 = {
+            "stationId": "1",
+            "stationName": "1",
+            "deviceId": "30011401302",
+            "vehicleId": "000420524c3f4931a2c2755c9b8281fa",
+            "rfId": "e20000193119018121103bbQQQ",
+            "plateNo": "迪V013QQ",
+            "fuelType": 92,
+            "price": 7.15,
+            "simulationType": 0,
+            "refuelQuantity": 120,
+            "maxPricel": 200,
+            "second": 22,
+            "eventType": 0
+        };
+
         test();
 
         function test() {
             setTimeout(function () {
                 getObj(data1);
+                getObj(data5);
             }, 3000);
 
             setTimeout(function () {
@@ -797,13 +824,14 @@
 
             setTimeout(function () {
                 getObj(data2);
+                getObj(data6);
             }, 8000);
 
             setTimeout(function () {
                 getObj(data4);
             }, 12000);
 
-        }*/
+        }
 
         /*测试使用数据 --- end */
 
@@ -821,7 +849,8 @@
                 console.log("浏览器支持 WebSocket!");
                 // 打开一个 web socket
                 // var url = 'ws://<%=basePath%>/webSocketServer';
-                var url = 'ws://<%=basePath%>/webSocketServer?version=1';
+                //var url = 'ws://<%=basePath%>/webSocketServer?version=1';
+                var url = 'ws://localhost:8017/myHandler';
                 ws = new WebSocket(url);
                 ws.onopen = function () {
                     console.log("ws 连接建立...");
@@ -834,7 +863,7 @@
                     var obj = eval('(' + data + ')');
                     //param = obj;
                     console.log("eval--->>>" + obj);
-                    getObj(obj);
+                    //getObj(obj);
                 };
 
                 ws.onclose = function () {
@@ -880,9 +909,36 @@
             }
             /*收到结束加油消息*/
             else if (data.eventType === 0) {
-                console.log("stop!!!!!!!");
+                console.log(data.stationId+"stop!!!!!!!");
                 tip2.hide();
-                $("#t" + data.stationId + "-fuel-end").show();
+
+               // $("#t" + data.stationId + "-fuel-end").show();
+                showInput(data);
+
+                function showInput(data) {
+
+                   // var table = $("<table></table>");
+
+                    var $1 = $("#t" + data.stationId + "-fuel-end");
+
+
+                    var tr = $("<tr></tr>");
+
+                    var showInput1 = '<td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label><label><input type="text" id = '+data.stationId+'input-money  class="input-show"><span class="text2">&nbsp;&nbsp;元</span></label></td>';
+                    var showInput2 = '<td><button type="button" id = '+data.stationId+'input-btn rfId ='+data.rfId+' class="btn btn-info">确认</button></td>';
+
+                    tr.append(showInput1).append(showInput2).appendTo($1);
+
+
+                /*<table style="display: none;width: 100%;text-align: center" id="t8-fuel-end">
+                        <tr>
+                        <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label><label><input type="text" id="8-money" class="input-show"><span class="text2">&nbsp;&nbsp;元</span></label></td>
+                    <td><button type="button" id="btn-8" class="btn btn-info">确认</button></td>
+                        </tr>
+                        </table>*/
+
+
+                }
                 /*todo:播放音频*/
                 var audio = document.getElementById("bgMusic");
                 audio.play();
@@ -896,52 +952,69 @@
             }
         }
 
+
+
         /* 金钱数值校验 表达式 */
         var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
 
+
         /*确认支付按钮*/
         $.each([1, 2, 3, 4, 5, 6, 7, 8], function (key, value) {
-            $("#btn-" + value).click(function () {
-                var money = $("#" + value + "-money").val();
 
-                if (!reg.test(money)) {
-                    layui.use('layer', function () {
-                        layer.alert('输入金额格式不对')
-                    });
-                } else {
-                    /*弹框二次确认*/
-                    layui.use('layer', function () {
-                        var layer = layui.layer;
-                        layer.confirm(value + " 号站台 确认支付：" + money + "元", {
-                                btn: ['确认', '重新输入金额'] //按钮
-                            },
-                            function () {
-                                /*开始支付*/
-                                pay(value, money, value + " 号站台 确认支付：" + money);
-                                layer.msg(value + " 号站台 确认支付：" + money + '元 支付成功', {icon: 1});
-                                $("#t" + value + "-fuel-end").hide();
-                                $("#t" + value + "-fueling-tip1").show();
-                            },
-                            function () {
+            $("body").on('click', '#'+value+'input-btn', function () {
+                var rfId = $(this).attr('rfId');
+                console.log("rfId === "+rfId);
+                console.log('#'+value+'input-btn');
+                var val = $("#"+value+"input-money").val();
+                console.log("input-money == " + val);
+                x(val,rfId);
+                function x(money,rfId) {
+                   // var money = $("#" + value + "-money").val();
 
-                            }
-                        );
-                    });
+                    if (!reg.test(val)) {
+                        layui.use('layer', function () {
+                            layer.alert('输入金额格式不对')
+                        });
+                    } else {
+                        /*弹框二次确认*/
+                        layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.confirm(value + " 号站台 确认支付：" + money + "元", {
+                                    btn: ['确认', '重新输入金额'] //按钮
+                                },
+                                function () {
+                                    /*开始支付*/
+                                    pay(value, money,rfId, value + " 号站台 确认支付：" + money);
+                                    layer.msg(value + " 号站台 确认支付：" + money + '元 支付成功', {icon: 1});
+                                    $("#t" + value + "-fuel-end").hide();
+                                    $("#t" + value + "-fueling-tip1").show();
+                                },
+                                function () {
+
+                                }
+                            );
+                        });
+                    }
                 }
+
             });
+
+
+            $("#btn-" + value).click();
         });
 
         /*支付*/
-        function pay(stationId, money, data) {
+        function pay(stationId, money,rfId, data) {
+            console.log("stationId=="+stationId);
             console.log(data + "pay do someThing ....");
-            fuelOverToPay(stationId, money);
+            fuelOverToPay(stationId, money,rfId);
             /*加油历史显示*/
             refuelHisShow();
         }
 
         /*支付完成----ws发送消息*/
-        function fuelOverToPay(stationId, money) {
-            var rfId = sessionStorage.getItem("stationId" + stationId);
+        function fuelOverToPay(stationId, money,rfId) {
+          //  var rfId = sessionStorage.getItem("stationId" + stationId);
             console.log("rfid == " + rfId + "--money=" + money);
             var eve = {
                 "rfId": rfId,
