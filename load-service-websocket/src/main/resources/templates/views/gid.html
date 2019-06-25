@@ -643,7 +643,7 @@
                 ws.onopen = function () {
                     // Web Socket 已连接上，使用 send() 方法发送数据
                     // ws.send("发送数据");
-                    var data = {
+                    /*var data = {
                         "stationId": "1",
                         "stationName": "1",
                         "deviceId": "30011401302",
@@ -654,7 +654,7 @@
                         "price": 7.15,
                         "simulationType": 0
                     };
-                    ws.send(JSON.stringify(data));
+                    ws.send(JSON.stringify(data));*/
                     sendObj();
                     console.log("数据发送中...");
                 };

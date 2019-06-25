@@ -50,10 +50,10 @@
 
     <!-- 日志级别 -->
     <!--关闭控制台-->
-   <!-- <root>
+    <root>
         <level value="error" />
         <level value="info" />
         <appender-ref ref="console" />
-    </root>-->
+    </root>
 
 </configuration>
