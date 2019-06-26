@@ -287,16 +287,16 @@
                         </table>
 
                         <table style="display: none;width: 100%;text-align: center" id="t3-fuel-end">
-                            <tr>
-                                <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
-                                    <label><input type="text" id="3-money" class="input-show">
-                                        <span class="text2">&nbsp;&nbsp;元</span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <button type="button" id="btn-3" class="btn btn-info">确认</button>
-                                </td>
-                            </tr>
+                            <!-- <tr>
+                                 <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
+                                     <label><input type="text" id="3-money" class="input-show">
+                                         <span class="text2">&nbsp;&nbsp;元</span>
+                                     </label>
+                                 </td>
+                                 <td>
+                                     <button type="button" id="btn-3" class="btn btn-info">确认</button>
+                                 </td>
+                             </tr>-->
                         </table>
                     </form>
                 </td>
@@ -335,16 +335,16 @@
                         </table>
 
                         <table style="display: none;width: 100%;text-align: center" id="t4-fuel-end">
-                            <tr>
-                                <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
-                                    <label><input type="text" id="4-money" class="input-show">
-                                        <span class="text2">&nbsp;&nbsp;元</span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <button type="button" id="btn-4" class="btn btn-info">确认</button>
-                                </td>
-                            </tr>
+                            <!-- <tr>
+                                 <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
+                                     <label><input type="text" id="4-money" class="input-show">
+                                         <span class="text2">&nbsp;&nbsp;元</span>
+                                     </label>
+                                 </td>
+                                 <td>
+                                     <button type="button" id="btn-4" class="btn btn-info">确认</button>
+                                 </td>
+                             </tr>-->
                         </table>
                     </form>
                 </td>
@@ -385,16 +385,16 @@
                         </table>
 
                         <table style="display: none;width: 100%;text-align: center" id="t5-fuel-end">
-                            <tr>
-                                <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
-                                    <label><input type="text" id="5-money" class="input-show">
-                                        <span class="text2">&nbsp;&nbsp;元</span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <button type="button" id="btn-5" class="btn btn-info">确认</button>
-                                </td>
-                            </tr>
+                            <!-- <tr>
+                                 <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
+                                     <label><input type="text" id="5-money" class="input-show">
+                                         <span class="text2">&nbsp;&nbsp;元</span>
+                                     </label>
+                                 </td>
+                                 <td>
+                                     <button type="button" id="btn-5" class="btn btn-info">确认</button>
+                                 </td>
+                             </tr>-->
                         </table>
                     </form>
                 </td>
@@ -432,7 +432,7 @@
                         </table>
 
                         <table style="display: none;width: 100%;text-align: center" id="t6-fuel-end">
-                            <tr>
+                            <!--<tr>
                                 <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
                                     <label><input type="text" id="6-money" class="input-show">
                                         <span class="text2">&nbsp;&nbsp;元</span>
@@ -441,7 +441,7 @@
                                 <td>
                                     <button type="button" id="btn-6" class="btn btn-info">确认</button>
                                 </td>
-                            </tr>
+                            </tr>-->
                         </table>
                     </form>
                 </td>
@@ -527,16 +527,16 @@
                         </table>
 
                         <table style="display: none;width: 100%;text-align: center" id="t8-fuel-end">
-                            <tr>
-                                <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
-                                    <label><input type="text" id="8-money" class="input-show">
-                                        <span class="text2">&nbsp;&nbsp;元</span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <button type="button" id="btn-8" class="btn btn-info">确认</button>
-                                </td>
-                            </tr>
+                            <!-- <tr>
+                                 <td><label><span class="text2">结算金额&nbsp;&nbsp;</span></label>
+                                     <label><input type="text" id="8-money" class="input-show">
+                                         <span class="text2">&nbsp;&nbsp;元</span>
+                                     </label>
+                                 </td>
+                                 <td>
+                                     <button type="button" id="btn-8" class="btn btn-info">确认</button>
+                                 </td>
+                             </tr>-->
                         </table>
                     </form>
                 </td>
@@ -826,6 +826,14 @@
                 getObj(data4);
             }, 12000);
 
+            setTimeout(function () {
+                getObj(data1);
+            }, 20000);
+
+            setTimeout(function () {
+                getObj(data2);
+            }, 30000);
+
         }
 
         /*测试使用数据 --- end */
@@ -914,8 +922,11 @@
 
                    // var table = $("<table></table>");
 
-                    var $1 = $("#t" + data.stationId + "-fuel-end");
+                    var payShow = $("#t" + data.stationId + "-fuel-end");
 
+                    payShow.show();
+
+                    payShow.empty();
 
                     var tr = $("<tr></tr>");
 

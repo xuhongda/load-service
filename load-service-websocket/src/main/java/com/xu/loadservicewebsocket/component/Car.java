@@ -40,4 +40,6 @@ public class Car implements Serializable {
 
     private String simulationType;
 
+    private Integer eventType;
+
 }

@@ -20,7 +20,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(myHandler(), "/myHandler").addInterceptors(new WebSocketInterceptor()).setAllowedOrigins("http://localhost:8080");
         //解决跨域问题---->>> 设为 * 允许所有
-        registry.addHandler(myHandler2(), "/myHandler2").addInterceptors(new WebSocketInterceptor()).setAllowedOrigins("http://localhost:8084");
+        registry.addHandler(myHandler2(), "/myHandler2").addInterceptors(new WebSocketInterceptor()).setAllowedOrigins("*");
     }
 
     @Bean

@@ -1,59 +1,68 @@
-<?xml version="1.0"?>
 <configuration>
-
-    <!-- ch.qos.logback.core.ConsoleAppender 控制台输出 -->
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- definition of appender STDOUT -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- ch.qos.logback.core.rolling.RollingFileAppender 文件日志输出 -->
-    <appender name="INFO"
+
+    <appender name="file-info"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/deviceStatus.log</file>
+        <file>logs/info.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>logs/deviceStatus.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <fileNamePattern>logs/info.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
             <!-- each file should be at most 100MB, keep 60 days worth of history, but at most 20GB -->
             <maxFileSize>100MB</maxFileSize>
             <maxHistory>60</maxHistory>
             <totalSizeCap>20GB</totalSizeCap>
         </rollingPolicy>
+        <!--级别过滤器-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- ch.qos.logback.core.rolling.RollingFileAppender 异常日志输出 -->
-    <appender name="ERROR"
+
+    <appender name="file-error"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/guide_error.log</file>
+        <file>logs/error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>logs/guide.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <fileNamePattern>logs/error.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
             <!-- each file should be at most 100MB, keep 60 days worth of history, but at most 20GB -->
             <maxFileSize>100MB</maxFileSize>
             <maxHistory>60</maxHistory>
             <totalSizeCap>20GB</totalSizeCap>
         </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!--指定哪个类输出-->
-    <logger name="com.xu.loadservicewebsocket.config.MyHandler2" level="DEBUG">
-        <!--引用配置-->
-        <appender-ref ref="INFO" />
-        <level value="info"/>
-        <appender-ref ref="console"/>
-    </logger>
 
-    <!-- 日志级别 -->
-    <!--关闭控制台-->
-    <root>
-        <level value="error" />
-        <level value="info" />
-        <appender-ref ref="console" />
+    <logger name="com.xu" level="INFO"/>
+
+
+    <root level="DEBUG">
+        <!-- appender referenced after it is defined -->
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <root level="INFO">
+        <!-- appender referenced after it is defined -->
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="file-info"/>
+        <appender-ref ref="file-error"/>
     </root>
 
 </configuration>
