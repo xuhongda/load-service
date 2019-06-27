@@ -74,10 +74,10 @@ public class WebsocketController {
         Integer stationId = car.getStationId();
         boolean b = hashMap.containsKey(stationId);
         if (!b) {
+            String carInfo = mapper.writeValueAsString(car);
+            log.info("carInfo ={}", carInfo);
+            myHandler2.pushAll(new TextMessage(carInfo));
             hashMap.put(car.getStationId(), car.getStationId());
-            String s = mapper.writeValueAsString(car);
-            log.info("s={}", s);
-            myHandler2.pushAll(new TextMessage(s));
             log.info("{} 站台= 开始加油", stationId);
         } else {
             log.info("{} 站台= 正在加油，不可以继续加油", stationId);
@@ -108,7 +108,6 @@ public class WebsocketController {
 
     private Car getCar() {
         Car car = new Car();
-        Date date = new Date();
         car.setRfId(UUID.randomUUID().toString());
         int v = (int) (Math.random() * 8 + 1);
         log.info("setStationId === {}", v);

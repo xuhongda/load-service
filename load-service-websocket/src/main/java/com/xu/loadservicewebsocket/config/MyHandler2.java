@@ -91,7 +91,6 @@ public class MyHandler2 extends TextWebSocketHandler {
 
         if (!sessions.isEmpty()) {
             int size = sessions.size();
-
             Random random = new Random(size + 1);
             Integer i = random.nextInt(size + 1);
             log.info("随机数为={}", i);
@@ -101,6 +100,8 @@ public class MyHandler2 extends TextWebSocketHandler {
                 log.info("推送-->>>num = {}", i);
                 handleTextMessage(webSocketSession, textMessage);
             }
+        } else {
+            log.info("浏览器与后台暂未连接");
         }
     }
 
@@ -110,12 +111,13 @@ public class MyHandler2 extends TextWebSocketHandler {
     public void pushAll(TextMessage textMessage) throws IOException {
 
         if (!sessions.isEmpty()) {
-            Iterator<Map.Entry<String, WebSocketSession>> iterator = sessions.entrySet().iterator();
-            while (iterator.hasNext()) {
-                WebSocketSession session = iterator.next().getValue();
+            for (Map.Entry<String, WebSocketSession> stringWebSocketSessionEntry : sessions.entrySet()) {
+                WebSocketSession session = stringWebSocketSessionEntry.getValue();
                 handleTextMessage(session, textMessage);
-                log.info("session={}", session);
+                log.info("session={},textMessage = {}", session, textMessage);
             }
+        } else {
+            log.info("浏览器与后台暂未连接");
         }
     }
 }
