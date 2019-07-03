@@ -3,6 +3,7 @@ package com.xu.loadservicewebsocket.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -31,5 +32,14 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer {
                 //.allowedHeaders("header1", "header2", "header3")
                 //.exposedHeaders("header1", "header2")
                 .allowCredentials(true).maxAge(3600);
+    }
+
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/gid").setViewName("gid");
+        registry.addViewController("/test").setViewName("test");
+        registry.addViewController("/websocket").setViewName("websocket");
+        registry.addViewController("/refuel").setViewName("refuel-new");
     }
 }

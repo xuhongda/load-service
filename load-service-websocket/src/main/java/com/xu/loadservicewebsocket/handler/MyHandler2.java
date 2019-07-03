@@ -1,4 +1,4 @@
-package com.xu.loadservicewebsocket.config;
+package com.xu.loadservicewebsocket.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;

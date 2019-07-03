@@ -1,5 +1,7 @@
 package com.xu.loadservicewebsocket.config;
 
+import com.xu.loadservicewebsocket.handler.MyHandler;
+import com.xu.loadservicewebsocket.handler.MyHandler2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;

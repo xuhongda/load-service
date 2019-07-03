@@ -1,20 +1,6 @@
 package com.xu.loadservicewebsocket.component;
 
-import com.xu.loadservicewebsocket.config.MyHandler;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.socket.TextMessage;
-import org.springframework.web.socket.WebSocketMessage;
-import org.springframework.web.socket.WebSocketSession;
-import org.springframework.web.socket.handler.TextWebSocketHandler;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.lang.invoke.MethodHandle;
-import java.util.Date;
 
 /**
  * @author xuhongda on 2018/8/15

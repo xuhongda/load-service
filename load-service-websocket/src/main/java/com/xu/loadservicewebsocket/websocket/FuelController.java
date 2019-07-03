@@ -2,67 +2,62 @@ package com.xu.loadservicewebsocket.websocket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xu.loadservicewebsocket.component.Car;
-import com.xu.loadservicewebsocket.config.MyHandler;
-import com.xu.loadservicewebsocket.config.MyHandler2;
+import com.xu.loadservicewebsocket.component.FuelPayResponse;
+import com.xu.loadservicewebsocket.handler.MyHandler;
+import com.xu.loadservicewebsocket.handler.MyHandler2;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.socket.TextMessage;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author xuhongda on 2018/4/19
+ * @author xuhongda on 2019/6/28
  * com.xu.loadservicewebsocket.websocket
- * load-service-parent
+ * load-service
  */
 @Slf4j
 @Controller
-public class WebsocketController {
+public class FuelController {
+
+    private ObjectMapper mapper = new ObjectMapper();
 
     /**
      * 正在加油队列
      */
-    private ConcurrentHashMap<Integer, Integer> hashMap = new ConcurrentHashMap();
+    private ConcurrentHashMap<Integer, Integer> hashMap = new ConcurrentHashMap<>();
 
-
-    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
-    private ObjectMapper mapper = new ObjectMapper();
-
-    private final MyHandler myHandler;
 
     private final MyHandler2 myHandler2;
 
-    public WebsocketController(MyHandler myHandler, MyHandler2 myHandler2) {
-        this.myHandler = myHandler;
+    public FuelController(MyHandler2 myHandler2) {
         this.myHandler2 = myHandler2;
     }
 
 
-    @GetMapping("gid")
-    public String xx(){
-        return "gid";
-    }
+    @PostMapping("pay")
+    @ResponseBody
+    public FuelPayResponse pay(@RequestParam(value = "stationId") Integer stationId, @RequestParam(value = "rfId") String id, @RequestParam(value = "refuelPrice") Double price) {
 
-    @GetMapping("test")
-    public String test(){
-        return "test";
-    }
+        log.info("stationId = {};price ={}", id, price);
+        if (price < 9999) {
+            hashMap.remove(stationId);
+            log.info("stationId = {}-支付成功：price ={} 元", id, price);
+            return new FuelPayResponse(100, "支付成功");
+        } else {
+            log.info("stationId = {}-支付失败：price ={} 元", id, price);
+            return new FuelPayResponse(200, "支付失败");
+        }
 
-    @GetMapping("refuel-new")
-    public String refuel(){
-        return "refuel-new";
-    }
-
-    @GetMapping("websocket")
-    public String websocket() {
-        return "websocket";
     }
 
 
@@ -102,7 +97,6 @@ public class WebsocketController {
         } else {
             log.info("{} 站台= 未在加油，不可以停止", stationId);
         }
-
     }
 
 
@@ -117,4 +111,5 @@ public class WebsocketController {
         car.setPrice(7.7);
         return car;
     }
+
 }
