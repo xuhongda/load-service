@@ -30,6 +30,10 @@
 
                 ws.onmessage = function (evt) {
                     let data = evt.data;
+                    console.log(data);
+                    if (data != undefined) {
+                        sendSuccess();
+                    }
                     // let obj = eval('(' + data + ')');
                     // console.log(obj)
                 };
@@ -51,11 +55,16 @@
         $("#send-button").click(function () {
             var text = $("#send").val();
             ws.send(text);
+
+
+        });
+
+        function sendSuccess() {
             $("#tips").html("发送成功");
             setTimeout(function () {
                 $("#tips").html("")
             }, 800);
-        })
+        }
     });
 </script>
 </body>
