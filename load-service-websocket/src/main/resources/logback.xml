@@ -2,7 +2,8 @@
     <!-- definition of appender STDOUT -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
+            <!--日志样式，格式-->
+            <pattern>%red(%d{yyyy-MM-dd HH:mm:ss.SSS}) %green([%thread]) %cyan(%-5level) %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 

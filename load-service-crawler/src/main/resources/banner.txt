@@ -10,6 +10,6 @@ ${AnsiColor.BRIGHT_RED}🏳‍🌈 ${AnsiColor.BRIGHT_RED}Th${AnsiColor.BRIGHT_M
 ${AnsiColor.MAGENTA}__  ___   _| |__   ___  _ __   __ _  __| | __ _
 \ \/ / | | | '_ \ / _ \| '_ \ / _` |/ _` |/ _` |
  >  <| |_| | | | | (_) | | | | (_| | (_| | (_| | ❤   ❤
-/_/\_\\__,_|_| |_|\___/|_| |_|\__, |\__,_|\__,_ ${AnsiColor.RED}|——😱——${AnsiColor.MAGENTA}
+/_/\_\\__,_|_| |_|\___/|_| |_|\__, |\__,_|\__,_ ${AnsiColor.GREEN}|——😱——${AnsiColor.MAGENTA}
                                __/ |
                               |___/
