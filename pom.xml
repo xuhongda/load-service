@@ -10,8 +10,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>load-service-component</module>
-        <module>load-service-provider</module>
         <module>load-service-util</module>
         <module>load-service-crawler</module>
         <module>load-service-websocket</module>
