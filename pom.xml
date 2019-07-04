@@ -11,12 +11,8 @@
 
     <modules>
         <module>load-service-component</module>
-        <module>load-service-html</module>
         <module>load-service-provider</module>
-        <module>load-service-solr</module>
-        <module>load-service-sso</module>
         <module>load-service-util</module>
-        <module>load-service-web</module>
         <module>load-service-crawler</module>
         <module>load-service-websocket</module>
     </modules>
