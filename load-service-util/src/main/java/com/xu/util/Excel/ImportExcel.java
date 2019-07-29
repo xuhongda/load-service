@@ -1,7 +1,7 @@
 package com.xu.util.Excel;
 
 import com.alibaba.fastjson.JSON;
-import com.sun.istack.internal.logging.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -24,10 +24,10 @@ import java.util.Map;
  * poi
  * dataplatform
  */
-
+@Slf4j
 public class ImportExcel {
 
-    private static Logger log = Logger.getLogger(ImportExcel.class);
+    //private static Logger log = Logger.getLogger(ImportExcel.class);
     /**
      * 2003- 版本的excel
      */
@@ -84,7 +84,8 @@ public class ImportExcel {
             } else {
                 continue;
             }
-            log.info(JSON.toJSONString(title));
+           // log.info(JSON.toJSONString(title));
+
 
             // 遍历当前sheet中的所有行
             for (int j = 1; j < sheet.getLastRowNum() + 1; j++) {
@@ -170,7 +171,7 @@ public class ImportExcel {
     }
 
     public static void main(String[] args) throws Exception {
-        File file = new File("F:\\办公文档\\车辆管理2.xlsx");
+        File file = new File("D:\\迅雷下载\\车辆管理2.xlsx");
         FileInputStream fis = new FileInputStream(file);
         Map<String, String> m = new HashMap<>();
         m.put("车牌号", "carNumber");

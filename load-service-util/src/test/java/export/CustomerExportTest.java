@@ -19,13 +19,13 @@ public class CustomerExportTest {
 
     @Test
     public void test(){
-        /**模拟数据开始*/
-        List<Employee> staffs = new ArrayList<Employee>();
+        //模拟数据开始
+        List<Employee> staffs = new ArrayList<>();
         for (int i = 0; i < 100000; i++) {
             Employee staff = new Employee(i, i+"group", 1900+i, 12, 25, 2500+i);
             staffs.add(staff);
         }
-        Map<String,String> titleMap = new LinkedHashMap<String,String>();
+        Map<String,String> titleMap = new LinkedHashMap<>();
         titleMap.put("name", "姓名");
         titleMap.put("clazz", "组号");
         titleMap.put("year", "年份");
@@ -33,10 +33,10 @@ public class CustomerExportTest {
         titleMap.put("day", "天");
         titleMap.put("salary", "薪资");
         String sheetName = "信息导出";
-        /**模拟数据结束*/
+        //模拟数据结束
         System.out.println("start导出");
         long start = System.currentTimeMillis();
-        ExportExcel.excelExport(staffs, titleMap, sheetName, new String("D:\\Downloads\\xxxx.xlsx"), new HttpServletResponse() {
+        ExportExcel.excelExport(staffs, titleMap, sheetName, "D:\\迅雷下载\\xxxx.xlsx", new HttpServletResponse() {
             @Override
             public void addCookie(Cookie cookie) {
 
@@ -225,5 +225,32 @@ public class CustomerExportTest {
         long end = System.currentTimeMillis();
         System.out.println("end导出");
         System.out.println("耗时："+(end-start)+"ms");
+    }
+
+
+    @Test
+    public void testTongji(){
+
+        //模拟数据开始
+        List<Employee> staffs = new ArrayList<>();
+        for (int i = 0; i < 100000; i++) {
+            Employee staff = new Employee(i, i+"group", 1900+i, 12, 25, 2500+i);
+            staffs.add(staff);
+        }
+        Map<String,String> titleMap = new LinkedHashMap<>();
+        titleMap.put("name", "序号");
+        titleMap.put("clazz", "车牌号码");
+        titleMap.put("year", "所属分组");
+        titleMap.put("month", "车主");
+        titleMap.put("day", "起始时间");
+        titleMap.put("salary", "结束时间");
+        titleMap.put("salary", "时长");
+        titleMap.put("salary", "行驶里程");
+        titleMap.put("salary", "油耗");
+        titleMap.put("salary", "最大速度");
+        titleMap.put("salary", "起始位置");
+        titleMap.put("salary", "结束位置");
+
+
     }
 }
