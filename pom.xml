@@ -29,7 +29,7 @@
         <mysql.version>5.1.38</mysql.version>
         <slf4j.version>1.7.25</slf4j.version>
         <!--jackson的版本需要注意，版本问题会导致工程错误-->
-        <jackson.version>2.9.4</jackson.version>
+        <jackson.version>2.9.10.3</jackson.version>
         <druid.version>1.0.9</druid.version>
         <jolbox.version>0.8.0.RELEASE</jolbox.version>
         <jstl.version>1.2</jstl.version>
