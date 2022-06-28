@@ -54,7 +54,7 @@
         <json.version>20160212</json.version>
         <logback-core.version>1.2.3</logback-core.version>
         <fastjson.version>1.2.47</fastjson.version>
-        <org.apache.poi.version>3.17</org.apache.poi.version>
+        <org.apache.poi.version>4.1.1</org.apache.poi.version>
         <!-- <fastdfs_client.version>1.27</fastdfs_client.version>-->
     </properties>
 
